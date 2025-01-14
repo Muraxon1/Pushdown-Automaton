@@ -28,6 +28,6 @@ class Automata:
             self._accepting_states = accepting_states
         else:
             raise ValueError(f"accepting states: '{accepting_states}' not in state set: {state_set}")
-
+        
         self._stack = Stack(self._stack_alphabet, self._initial_stack_symbol)
 

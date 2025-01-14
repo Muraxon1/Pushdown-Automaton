@@ -1,6 +1,3 @@
-from errors import *
-
-
 class Stack:
 
     def __init__(self, stack_alphabet: list, initial_symbol: str):
@@ -13,10 +10,7 @@ class Stack:
             self._stack.append(symbol)
             self.stack_length = len(self._stack)
         else:
-            try:
-                raise StackSymbolError(f"{self._alphabet}", f"Got {symbol}, expected")
-            except StackSymbolError as e:
-                print(e)
+            raise ValueError(f"{self._alphabet}", f"Got {symbol}, expected")
 
     def stack_pop(self):
         popped = self._stack.pop()
