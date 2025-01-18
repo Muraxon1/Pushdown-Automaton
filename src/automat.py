@@ -12,16 +12,12 @@ class Automata:
         self._transition_relations = transition_relations
 
         # validate start state
-        if start_state in state_set:
-            self._start_state = start_state
-        else:
-            raise ValueError(f"Start state '{start_state}' not in state set: {state_set}")
+        if validate_start_state(state_set, start_state):
+            self.start_state = start_state
 
         # validate initial stac symbol
-        if initial_stack_symbol in stack_alphabet:
+        if validate_initial_stack_symbol(stack_alphabet, initial_stack_symbol):
             self._initial_stack_symbol = initial_stack_symbol
-        else:
-            raise ValueError(f"Initial stack symbol '{initial_stack_symbol}' not in stack alphabet: {stack_alphabet}")
 
         # validate starting states
         if accepting_states in state_set:
@@ -31,3 +27,15 @@ class Automata:
         
         self._stack = Stack(self._stack_alphabet, self._initial_stack_symbol)
 
+
+        def validate_start_state(self, state_set, start_state):
+            if start_state in state_set:
+                return True
+            else:
+                raise ValueError(f"Start state '{start_state}' not in state set: {state_set}")
+
+        def validate_initial_stack_symbol(self, stack_alphabet, initial_stack_symbol):
+            if initial_stack_symbol in stack_alphabet:
+                return True
+            else:
+                raise ValueError(f"Initial Stack Symbol '{initial_stack_symbol}' not in stack alphabet: {stack_alphabet}")
